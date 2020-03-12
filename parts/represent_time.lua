@@ -8,7 +8,8 @@
 return
   function(num_hours)
     local num_hours_int, num_minutes = math.modf(num_hours)
-    local num_minutes_int, num_seconds = math.modf(num_minutes * 60)
+    num_minutes = num_minutes * 60
+    local num_minutes_int, num_seconds = math.modf(num_minutes)
     num_seconds = num_seconds * 60
     local is_ok, result =
       pcall(

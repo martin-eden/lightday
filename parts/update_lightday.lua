@@ -1,4 +1,3 @@
-
 local daylight_calculator = request('!.mechs.lightday.cbm.interface')
 
 local get_min_max = request('get_min_max')
@@ -12,18 +11,18 @@ local el_text_lightday = request('el_text_lightday')
 local min_day_num = request('min_day_num')
 local max_day_num = request('max_day_num')
 
-local last_latitude_deg = 91
-local last_day_number = -1
+local prev_latitude_deg = 91
+local prev_day_number = -1
 
 local update_lightday =
   function(app)
     daylight_calculator.latitude_deg = tonumber(el_scrollbar_latitude.Value)
     daylight_calculator.day_number = tonumber(el_scrollbar_daynum.Value)
 
-    local same_lat = (daylight_calculator.latitude_deg == last_latitude_deg)
-    local same_day = (daylight_calculator.day_number == last_day_number)
-    last_latitude_deg = daylight_calculator.latitude_deg
-    last_day_number = daylight_calculator.day_number
+    local same_lat = (daylight_calculator.latitude_deg == prev_latitude_deg)
+    local same_day = (daylight_calculator.day_number == prev_day_number)
+    prev_latitude_deg = daylight_calculator.latitude_deg
+    prev_day_number = daylight_calculator.day_number
 
     if same_lat and same_day then
       return
