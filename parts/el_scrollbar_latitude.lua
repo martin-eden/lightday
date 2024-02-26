@@ -1,13 +1,12 @@
 local tui = require('tek.ui')
 local scrollbar = request('!.frontend.tekui.scrollbar')
-local initial_latitude = request('initial_latitude')
 
 local el_scrollbar_latitude =
   scrollbar(
     'el_scrollbar_latitude',
     -90,
     90,
-    {Value = initial_latitude, Width = 'free'}
+    {Value = 3.1415, Width = 'free'}
   )
 
 el_scrollbar_latitude:addNotify(

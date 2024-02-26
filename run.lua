@@ -1,5 +1,15 @@
-package.path = package.path .. ';../../../../workshop/?.lua'
-require('base')
+-- Lightday calculation by latitude and day number
+
+--[[
+  Version: 1
+  Last mod.: 2024-02-26
+]]
+
+-- package.path = package.path .. ';../../?.lua'
+require('workshop.base')
+
+local initial_latitude = 55.0
+local initial_daynum = tonumber(os.date('%j'))
 
 local tui = require('tek.ui')
 
@@ -9,19 +19,25 @@ local create_window = request('!.frontend.tekui.window')
 local install_timer_routine = request('!.frontend.tekui.install_timer_routine')
 
 local el_label_latitude = request('parts.el_label_latitude')
+
 local el_scrollbar_latitude = request('parts.el_scrollbar_latitude')
+-- local t2s = request('!.table.as_lua_code')
+-- print('!', t2s(el_scrollbar_latitude))
+el_scrollbar_latitude.Value = initial_latitude
+
 local el_text_latitude = request('parts.el_text_latitude')
 
 local el_label_daynum = request('parts.el_label_daynum')
+
 local el_scrollbar_daynum = request('parts.el_scrollbar_daynum')
+el_scrollbar_daynum.Value = initial_daynum
+
 local el_text_daynum = request('parts.el_text_daynum')
 
 local el_label_lightday = request('parts.el_label_lightday')
 local el_scrollbar_lightday = request('parts.el_scrollbar_lightday')
 local el_text_lightday = request('parts.el_text_lightday')
 
-local initial_latitude = request('parts.initial_latitude')
-local initial_daynum = request('parts.initial_daynum')
 local update_lightday = request('parts.update_lightday')
 
 local content =
@@ -64,3 +80,8 @@ install_timer_routine(app, update_lightday)
 
 main_window:setValue('Status', 'show')
 app:run()
+
+--[[
+  2020-03-12
+  2024-02-26
+]]
