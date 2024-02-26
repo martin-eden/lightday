@@ -6,14 +6,13 @@ local daynum_to_isodate = request('daynum_to_isodate')
 
 local min_day_num = request('min_day_num')
 local max_day_num = request('max_day_num')
-local initial_daynum = request('initial_daynum')
 
 local el_scrollbar_daynum =
   scrollbar(
     'el_scrollbar_daynum',
     min_day_num,
     max_day_num,
-    {Value = initial_daynum, Step = 1, Width = 'free'}
+    {Value = min_day_num, Step = 1, Width = 'free'}
   )
 
 el_scrollbar_daynum:addNotify(
